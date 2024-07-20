@@ -37,17 +37,35 @@ function App() {
   useEffect(() => {
     const initTelegramWebApp = () => {
       const tg = window.Telegram.WebApp;
+
+      const handleCloseEvent = () => {
+        console.log("WebApp closed");
+        // Handle the close event here
+        // For example, you can perform cleanup or save user data
+      };
+
+      // Register the event listener
+      tg.onEvent("popupClosed", handleCloseEvent);
       tg.ready();
 
       if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-        const userInfo = tg.initDataUnsafe.user;
+        const userInfo = tg.initDataUnsafe.user as TelegramWebAppUser;
         setUser(userInfo);
       } else {
         console.error("Telegram WebApp user data is not available.");
       }
+
+      // Cleanup function to remove the event listener
+      return () => {
+        tg.offEvent("popupClosed", handleCloseEvent);
+      };
     };
 
-    initTelegramWebApp();
+    // Call the init function and store the cleanup function
+    const cleanup = initTelegramWebApp();
+
+    // Return the cleanup function to be called on component unmount
+    return cleanup;
   }, []);
 
   return (
