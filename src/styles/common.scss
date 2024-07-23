@@ -1,0 +1,195 @@
+@import './common/popover.scss';
+@import './common/notification.scss';
+
+.sonnhat-svg {
+  fill: $text1;
+
+  &:hover {
+    fill: $orange3;
+  }
+}
+
+.search {
+  height: 35px;
+}
+
+.iconButton {
+  padding-top: 22px;
+  padding-bottom: 22px;
+  background-color: transparent;
+  border: none;
+  border-radius: 100%;
+  box-shadow: none;
+  color: $orange3;
+  &:hover {
+    background-color: $orange4 !important;
+    border: none !important;
+;   }
+}
+
+
+a:hover {
+  color: $orange3;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.sonnhat-divider {
+  margin: 0;
+  border-color: $line2;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.disabled:hover {
+  cursor: not-allowed;
+}
+
+*:focus-visible {
+  outline: unset !important;
+  outline-offset: unset !important;
+  transition: unset !important;
+}
+
+.default-font {
+  font-family: 'Inter';
+}
+
+@for $i from 1 through 50 {
+  .p-#{$i} {
+    padding: #{$i}px;
+  }
+
+  .pt-#{$i} {
+    padding-top: #{$i}px;
+  }
+
+  .pr-#{$i} {
+    padding-right: #{$i}px;
+  }
+
+  .pl-#{$i} {
+    padding-left: #{$i}px;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: #{$i}px;
+  }
+
+  .m-#{$i} {
+    margin: #{$i}px;
+  }
+
+  .mt-#{$i} {
+    margin-top: #{$i}px;
+  }
+
+  .mr-#{$i} {
+    margin-right: #{$i}px;
+  }
+
+  .ml-#{$i} {
+    margin-left: #{$i}px;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+}
+
+.ant-btn:not(.ant-btn-icon-only) > .ant-btn-icon:not(:last-child) {
+  margin-inline-end: 6px;
+}
+
+.ant-tooltip span {
+  font-size: 12px;
+}
+
+.sonnhat-scrollable-x {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.sonnhat-scrollable-y {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.ceiling {
+  color: $pink-1;
+}
+
+.reference {
+  color: $yellow;
+}
+
+.floor {
+  color: $blue-1;
+}
+
+.high {
+  color: $green;
+}
+
+.low {
+  color: $red1;
+}
+
+.ag-cell {
+  border: 0;
+}
+
+.ag-cell-data-changed {
+  color: $white-1 !important;
+  background-color: unset !important;
+
+  .pending-price-up {
+    background-color: $green;
+  }
+
+  .pending-price-down {
+    background-color: $red1;
+  }
+
+  .matching-price-up {
+    background-color: $yellow;
+  }
+
+  .matching-price-down {
+    background-color: $yellow;
+  }
+
+  .total-vol-up {
+    background-color: #454c4c !important;
+  }
+
+  .total-vol-down {
+    background-color: #454c4c !important;
+  }
+}
+
+.centered {
+  /* Center vertically and horizontally */
+  position: sonnhatolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+@keyframes detect-scroll {
+  from, to {
+    --can-scroll: ; /* space = true */
+  }
+}
