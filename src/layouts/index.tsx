@@ -1,13 +1,15 @@
+import { Layout } from 'antd';
+import { Content } from 'antd/es/layout/layout';
+import { Outlet } from 'react-router-dom';
+import AppHeader from './Header';
+
 import '@styles/App.scss';
 import '@styles/common.scss';
-import { Input, Layout, Typography } from 'antd';
-import { Content } from 'antd/es/layout/layout';
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
 
 function AppLayout() {
   return (
     <Layout>
+      <AppHeader />
       <Content className='ant-content'>
         <Outlet />
       </Content>

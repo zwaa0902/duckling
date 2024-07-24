@@ -1,5 +1,6 @@
 @import './common/popover.scss';
 @import './common/notification.scss';
+@import './common/heading.scss';
 
 .sonnhat-svg {
   fill: $text1;
@@ -9,10 +10,6 @@
   }
 }
 
-.search {
-  height: 35px;
-}
-
 .iconButton {
   padding-top: 22px;
   padding-bottom: 22px;
@@ -20,13 +17,12 @@
   border: none;
   border-radius: 100%;
   box-shadow: none;
-  color: $orange3;
+  color: $white;
   &:hover {
     background-color: $orange4 !important;
     border: none !important;
-;   }
+  }
 }
-
 
 a:hover {
   color: $orange3;
@@ -186,10 +182,9 @@ a:hover {
   transform: translate(-50%, -50%);
 }
 
-
-
 @keyframes detect-scroll {
-  from, to {
+  from,
+  to {
     --can-scroll: ; /* space = true */
   }
 }

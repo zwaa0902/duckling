@@ -23,21 +23,21 @@ const themeConfig = {
 const router = createBrowserRouter([
   {
     path: '',
+    element: <Onboarding />,
+  },
+  {
+    path: '',
     element: <AppLayout />,
     children: [
       {
-        path: '',
-        element: <Onboarding />,
+        path: 'home',
+        element: <Home />,
+      },
+      {
+        path: 'about',
+        element: <About />,
       },
     ],
-  },
-  {
-    path: 'about',
-    element: <About />,
-  },
-  {
-    path: '*',
-    element: <Navigate to='/' />,
   },
 ]);
 

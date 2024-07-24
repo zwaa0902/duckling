@@ -62,7 +62,7 @@ function Home() {
           </FlexBoxRow>
           <Counter />
           <TransferTon /> */}
-        <div>
+        {/* <div>
           <h2>Telegram Web App</h2>
           {user ? (
             <div>
@@ -75,7 +75,7 @@ function Home() {
           ) : (
             <p>Loading user information...</p>
           )}
-        </div>
+        </div> */}
       </FlexBoxCol>
     </>
   );

@@ -1,0 +1,25 @@
+.layout {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.row {
+  justify-content: center;
+}
+
+.custom-button {
+  background-color: #222020;
+  border-radius: 8px;
+  width: 100%;
+  color: white;
+  padding: 20px 0;
+}
+
+@media (min-width: 500px) {
+  .custom-button {
+    width: 250px;
+  }
+}

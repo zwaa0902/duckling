@@ -1,0 +1,122 @@
+@import '../variables.scss';
+
+.heading-1 {
+  font-weight: 300;
+  font-size: 96px;
+  line-height: 116px;
+}
+.heading-2 {
+  font-weight: 300;
+  font-size: 60px;
+  line-height: 73px;
+}
+.heading-3 {
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+}
+.heading-4 {
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 41px;
+}
+.heading-5 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+}
+.heading-6 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+.subtitle-1 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+.subtitle-2 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+.subtitle-3 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+}
+.subtitle-4 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+.body-0 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.body-1 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+.body-2,
+.body-3 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+.caption {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.caption-2 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.5px;
+}
+.overline {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+}
+.text-1 {
+  color: $text1;
+}
+.text-3 {
+  color: $text3;
+}
+.text-4 {
+  color: $text4;
+}
+.link {
+  text-decoration: underline;
+}
+
+.caption-3 {
+  font-size: 12px;
+  * {
+    font-size: 12px;
+  }
+}
+
+.white-1 {
+  color: $white-1;
+}
+.red {
+  color: $red1;
+}
+.green {
+  color: $green;
+}
+.normal {
+  color: $normal;
+}
+
+.bold {
+  font-weight: 700;
+}
+.underline {
+  text-decoration: underline;
+}
