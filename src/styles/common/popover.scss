@@ -1,0 +1,15 @@
+@import '../variables.scss';
+
+.sonnhat-popover {
+  &__content {
+    color: $white;
+    .ant-space-item {
+      font-size: 12px;
+    }
+    .ant-row {
+      &:not(:first-child) {
+        margin-top: 15px;
+      }
+    }
+  }
+}

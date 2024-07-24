@@ -1,0 +1,50 @@
+@import '../variables.scss';
+
+.ant-notification {
+  margin-inline-end: 12px !important;
+  .ant-notification-notice-wrapper {
+    background-color: transparent;
+  }
+
+  .abs-notification {
+    width: 344px !important;
+    margin-bottom: 12px !important;
+    &__success,
+    &__error {
+      padding: 20px 12px !important;
+      border-radius: 6px !important;
+
+      .ant-notification-notice-content {
+        .ant-notification-notice-with-icon {
+          display: inline-flex;
+          align-items: center;
+
+          .ant-notification-notice-icon {
+            font-size: unset;
+          }
+
+          .ant-notification-notice-message {
+            margin-inline-start: 23px;
+            margin-bottom: 0;
+            color: $white-1;
+          }
+        }
+      }
+
+      .ant-notification-notice-close {
+        inset-inline-end: 12px !important;
+        .abs__icon__close {
+          color: $white-1;
+        }
+      }
+    }
+
+    &__success {
+      background: $green !important;
+    }
+
+    &__error {
+      background: $red1 !important;
+    }
+  }
+}
