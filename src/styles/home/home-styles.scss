@@ -1,0 +1,62 @@
+@import '../variables.scss';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: $black-1;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden; // New line
+}
+
+.avatar-circle {
+  margin: 1rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  background: $yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.wallet {
+  width: -webkit-fill-available;
+  border-radius: 8px;
+  background-color: $white;
+  display: flex;
+  padding: 1rem;
+  justify-content: space-around;
+}
+.wallet-column {
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background-color: white;
+  border-radius: 40px 40px 0 0;
+  width: 100%;
+}
+.tab {
+  width: -webkit-fill-available;
+  padding: 0 1rem;
+}

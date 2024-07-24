@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTonConnect } from '../hooks/useTonConnect';
-import { FlexBoxCol } from '../components/styled/styled';
 
+import { Col, Divider, Row, Tabs, Typography } from 'antd';
+import Avatar from '../components/common/Avatar';
+import '@styles/home/home-styles.scss';
+
+const { Text } = Typography;
 interface TelegramWebAppUser {
   id: number;
   first_name: string;
@@ -48,9 +52,47 @@ function Home() {
   }, []);
 
   return (
-    <>
-      <FlexBoxCol>
-        {/* <FlexBoxRow>
+    <div className='wrapper'>
+      <Row>
+        <Avatar name='John Doe' />
+      </Row>
+      <Row>
+        <Text className='white-1'>John Doe</Text>
+      </Row>
+      <div className='wallet' style={{ margin: '1rem' }}>
+        <div className='wallet-column'>
+          <Text className='black-1'>You own</Text>
+          <Text className='black-1'>Value</Text>
+        </div>
+        <Divider type='vertical' style={{ borderColor: 'gray', height: 'auto', verticalAlign: 'middle' }} />
+        <div className='wallet-column'>
+          <Text className='black-1'>You owe</Text>
+          <Text className='black-1'>Value</Text>
+        </div>
+        <Divider type='vertical' style={{ borderColor: 'gray', height: 'auto', verticalAlign: 'middle' }} />
+        <div className='wallet-column'>
+          <Text className='black-1'>Total balance</Text>
+          <Text className='black-1'>Value</Text>
+        </div>
+      </div>
+      <div className='container'>
+        <div className='wallet-column'>
+          <Tabs
+            className='tab'
+            defaultActiveKey='1'
+            centered
+            items={new Array(3).fill(null).map((_, i) => {
+              const id = String(i + 1);
+              return {
+                label: `Tab ${id}`,
+                key: id,
+                children: `Content of Tab Pane ${id}`,
+              };
+            })}
+          />
+        </div>
+      </div>
+      {/* <FlexBoxRow>
             <TonConnectButton />
             <Button>
               {network
@@ -62,7 +104,7 @@ function Home() {
           </FlexBoxRow>
           <Counter />
           <TransferTon /> */}
-        {/* <div>
+      {/* <div>
           <h2>Telegram Web App</h2>
           {user ? (
             <div>
@@ -76,8 +118,7 @@ function Home() {
             <p>Loading user information...</p>
           )}
         </div> */}
-      </FlexBoxCol>
-    </>
+    </div>
   );
 }
 
