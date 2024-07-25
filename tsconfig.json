@@ -31,7 +31,7 @@
       "@redux/*": ["./src/redux/*"],
       "@services/*": ["./src/services/*"],
       "@styles/*": ["./src/styles/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true,

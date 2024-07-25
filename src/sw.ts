@@ -130,20 +130,9 @@ export default defineConfig(({ mode }) => ({
         swDest: 'dist/sw.js',
       },
       manifest: {
-        name: 'ABS Invest',
-        short_name: 'ABS',
+        name: 'Sơn Nhật Construction',
+        short_name: 'Sonnhatctc',
         prefer_related_applications: true,
-
-        related_applications: [
-          {
-            platform: 'play',
-            url: 'https://play.google.com/store/apps/details?id=vn.abs.app',
-          },
-          {
-            platform: 'itunes',
-            url: 'https://apps.apple.com/vn/app/abs-invest/id1633376332',
-          },
-        ],
       },
     }),
   ],
