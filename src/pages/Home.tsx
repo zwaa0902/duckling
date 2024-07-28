@@ -4,6 +4,7 @@ import { useTonConnect } from '../hooks/useTonConnect';
 import { Col, Divider, Row, Tabs, Typography } from 'antd';
 import Avatar from '../components/common/Avatar';
 import '@styles/home/home-styles.scss';
+import userService from '@/services/user.service';
 
 const { Text } = Typography;
 interface TelegramWebAppUser {
@@ -34,6 +35,16 @@ function Home() {
       if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
         const userInfo = tg.initDataUnsafe.user as TelegramWebAppUser;
         setUser(userInfo);
+        userService.getUserInfo(userInfo.id.toString()).then((res) => {
+          console.log('res', res);
+        }).catch((err) => {
+          userService.register(userInfo).then((res) => {
+            console.log(res);
+          }).catch((err) => {
+            console.log('err', err);
+            
+          });
+        });
       } else {
         console.error('Telegram WebApp user data is not available.');
       }

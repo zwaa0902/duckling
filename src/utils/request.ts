@@ -2,18 +2,9 @@ import _ from 'lodash';
 import axios from 'axios';
 import secureStorage from 'react-secure-storage';
 import { v4 as uuidv4 } from 'uuid';
-import hmacSHA256 from 'crypto-js/hmac-sha256';
-import Base64 from 'crypto-js/enc-base64';
 
-export enum XOtpType {
-  SMS = 'SMS',
-  PIN = 'PIN',
-  SMART_OTP = 'SMART_OTP',
-}
 
 let authInterceptors: number;
-const key = import.meta.env.ABS_HMAC_KEY ?? 'AbsWebKey';
-const message = import.meta.env.ABS_HMAC_SECRET ?? 'AbsWebSecret';
 
 // // Add a response interceptor
 axios.interceptors.response.use(
@@ -95,10 +86,7 @@ async function del(url: string, payload = {}, config = {}) {
 // Add device id interceptor
 axios.interceptors.request.use(
   (config) => {
-    const hmacDigest = Base64.stringify(hmacSHA256(message, key));
     config.headers['x-device-id'] = getDeviceId();
-    config.headers['X-Sec-AS'] = import.meta.env.ABS_SEC_AS ?? 'AbsWeb';
-    config.headers['X-Sec-Identity'] = hmacDigest;
     return config;
   },
   (error) => {
@@ -125,13 +113,7 @@ function removeAuthRequestToken() {
   axios.interceptors.request.eject(authInterceptors);
 }
 
-function pinHeader(pinValue: string, pinType: XOtpType | undefined, payload?: object) {
-  return {
-    ...payload,
-    'x-otp-type': pinType == undefined ? '' : pinType,
-    'x-otp-value': pinValue,
-  };
-}
+
 
 export default {
   get,
@@ -141,7 +123,5 @@ export default {
   del,
   configAuthRequestToken,
   removeAuthRequestToken,
-  pinHeader,
-  XOtpType,
   getDeviceId,
 };
