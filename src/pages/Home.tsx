@@ -5,6 +5,7 @@ import { Col, Divider, Row, Tabs, Typography } from 'antd';
 import Avatar from '../components/common/Avatar';
 import '@styles/home/home-styles.scss';
 import userService from '@/services/user.service';
+import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
 
 const { Text } = Typography;
 interface TelegramWebAppUser {
@@ -35,17 +36,26 @@ function Home() {
       if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
         const userInfo = tg.initDataUnsafe.user as TelegramWebAppUser;
         setUser(userInfo);
-        userService.getUserInfo(userInfo.id.toString()).then((res) => {
-          console.log('res', res);
-        }).catch((err) => {
-          userService.register(userInfo).then((res) => {
-            console.log(res);
-          }).catch((err) => {
-            console.log('err', err);
-            
+        userService
+          .getUserInfo(userInfo.id.toString())
+          .then((res) => {
+            console.log('res', res);
+          })
+          .catch((err) => {
+            userService
+              .register(userInfo)
+              .then((res) => {
+                onSuccessNotification('User registered successfully');
+                console.log(res);
+              })
+              .catch((err) => {
+                onFailureNotification('User registration failed');
+                console.log('err', err);
+              });
           });
-        });
       } else {
+        onFailureNotification('Telegram WebApp user data is not available.');
+
         console.error('Telegram WebApp user data is not available.');
       }
 
