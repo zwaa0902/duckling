@@ -34,6 +34,7 @@ function Home() {
       tg.ready();
 
       if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        onSuccessNotification(tg.initDataUnsafe.user.toString());
         const userInfo = tg.initDataUnsafe.user as TelegramWebAppUser;
         setUser(userInfo);
         userService
@@ -83,17 +84,17 @@ function Home() {
       <div className='wallet' style={{ margin: '1rem' }}>
         <div className='wallet-column'>
           <Text className='black-1'>You own</Text>
-          <Text className='black-1'>Value</Text>
+          <Text className='black-1'>170.000.000</Text>
         </div>
         <Divider type='vertical' style={{ borderColor: 'gray', height: 'auto', verticalAlign: 'middle' }} />
         <div className='wallet-column'>
           <Text className='black-1'>You owe</Text>
-          <Text className='black-1'>Value</Text>
+          <Text className='black-1'>100.000.000</Text>
         </div>
         <Divider type='vertical' style={{ borderColor: 'gray', height: 'auto', verticalAlign: 'middle' }} />
         <div className='wallet-column'>
           <Text className='black-1'>Total balance</Text>
-          <Text className='black-1'>Value</Text>
+          <Text className='black-1'>70.000.000</Text>
         </div>
       </div>
       <div className='container'>
