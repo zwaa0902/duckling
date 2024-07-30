@@ -1,17 +1,14 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { Address, toNano, comment } from "ton";
-import { useTonConnect } from "../hooks/useTonConnect";
-import { Card, FlexBoxCol, FlexBoxRow, Button, Input } from "./styled/styled";
+import { useState } from 'react';
+import { Address, comment, toNano } from 'ton';
+import { useTonConnect } from '../hooks/useTonConnect';
+import { Button, Card, FlexBoxCol, FlexBoxRow, Input } from './styled/styled';
 
 export function TransferTon() {
   const { sender, connected } = useTonConnect();
 
-  const [tonAmount, setTonAmount] = useState("0.01");
-  const [text, setText] = useState("");
-  const [tonRecipient, setTonRecipient] = useState(
-    ""
-  );
+  const [tonAmount, setTonAmount] = useState('0.01');
+  const [text, setText] = useState('');
+  const [tonRecipient, setTonRecipient] = useState('');
 
   return (
     <Card>
@@ -21,26 +18,18 @@ export function TransferTon() {
           <label>Amount </label>
           <Input
             style={{ marginRight: 8 }}
-            type="number"
+            type='number'
             value={tonAmount}
             onChange={(e) => setTonAmount(e.target.value)}
           ></Input>
         </FlexBoxRow>
         <FlexBoxRow>
           <label>To </label>
-          <Input
-            style={{ marginRight: 8 }}
-            value={tonRecipient}
-            onChange={(e) => setTonRecipient(e.target.value)}
-          ></Input>
+          <Input style={{ marginRight: 8 }} value={tonRecipient} onChange={(e) => setTonRecipient(e.target.value)}></Input>
         </FlexBoxRow>
-         <FlexBoxRow>
+        <FlexBoxRow>
           <label>Comment</label>
-          <Input
-            style={{ marginRight: 8 }}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          ></Input>
+          <Input style={{ marginRight: 8 }} value={text} onChange={(e) => setText(e.target.value)}></Input>
         </FlexBoxRow>
         <Button
           disabled={!connected}

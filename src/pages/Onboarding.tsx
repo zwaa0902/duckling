@@ -1,12 +1,10 @@
 import { Row, Col, Typography, Button } from 'antd';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 const { Title, Text } = Typography;
 
 import '@styles/onboarding/obd.scss';
 
 function Onboarding() {
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (

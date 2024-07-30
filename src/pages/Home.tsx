@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useTonConnect } from '../hooks/useTonConnect';
 
-import { Col, Divider, Row, Tabs, Typography } from 'antd';
-import Avatar from '../components/common/Avatar';
-import '@styles/home/home-styles.scss';
-import userService from '@/services/user.service';
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
+import userService from '@/services/user.service';
+import '@styles/home/home-styles.scss';
+import { Divider, Row, Tabs, Typography } from 'antd';
+import Avatar from '../components/common/Avatar';
 
 const { Text } = Typography;
 interface TelegramWebAppUser {
@@ -17,8 +16,8 @@ interface TelegramWebAppUser {
 }
 
 function Home() {
-  const { network } = useTonConnect();
-  const [user, setUser] = useState<TelegramWebAppUser | null>(null);
+  // const { network } = useTonConnect();
+  const [, setUser] = useState<TelegramWebAppUser | null>(null);
   useEffect(() => {
     const initTelegramWebApp = () => {
       const tg = window.Telegram.WebApp;
@@ -43,6 +42,8 @@ function Home() {
             console.log('res', res);
           })
           .catch((err) => {
+            console.log('err', err);
+
             userService
               .register(userInfo)
               .then((res) => {
@@ -51,7 +52,7 @@ function Home() {
               })
               .catch((err) => {
                 onFailureNotification('User registration failed');
-                console.log('err', err);
+                console.log('err1', err);
               });
           });
       } else {

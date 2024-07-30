@@ -1,7 +1,7 @@
 import '@styles/App.scss';
 import '@styles/normalize.scss';
 import '@twa-dev/sdk';
-import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 
 import { ConfigProvider } from 'antd';

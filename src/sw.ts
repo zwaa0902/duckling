@@ -23,7 +23,7 @@ export const aliases = {
   '/^~/': '',
 };
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({}) => ({
   server: {
     host: '0.0.0.0',
     open: true,
