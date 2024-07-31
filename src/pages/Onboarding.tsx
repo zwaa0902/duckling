@@ -21,7 +21,7 @@ function Onboarding() {
         <Row className='row pb-16'>
           <Text>Split cơm the easy way</Text>
         </Row>
-        <Row>
+        <Row className='center'>
           <Button className='custom-button mb-40' onClick={() => navigate('/home')}>
             Home
           </Button>

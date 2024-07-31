@@ -34,9 +34,6 @@ export default defineConfig(({ mode }) => ({
     open: true,
     port: 80,
   },
-  define: {
-    'import.meta.env.VITE_APP_VERSION': JSON.stringify(process.env.CI_COMMIT_SHORT_SHA) || '1.0',
-  },
   envPrefix: 'DCK',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.json'],

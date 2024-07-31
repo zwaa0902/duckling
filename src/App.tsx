@@ -20,25 +20,30 @@ const themeConfig = {
   },
 };
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '',
+      element: <Onboarding />,
+    },
+    {
+      element: <AppLayout />,
+      children: [
+        {
+          path: 'home',
+          element: <Home />,
+        },
+        {
+          path: 'about',
+          element: <About />,
+        },
+      ],
+    },
+  ],
   {
-    path: '',
-    element: <Onboarding />,
+    basename: process.env.NODE_ENV === 'production' ? '/duckling/' : '/',
   },
-  {
-    element: <AppLayout />,
-    children: [
-      {
-        path: 'home',
-        element: <Home />,
-      },
-      {
-        path: 'about',
-        element: <About />,
-      },
-    ],
-  },
-]);
+);
 
 function About() {
   return (
