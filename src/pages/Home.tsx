@@ -3,10 +3,16 @@ import { useEffect, useState } from 'react';
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
 import userService from '@/services/user.service';
 import '@styles/home/home-styles.scss';
-import { Divider, Row, Tabs, Typography } from 'antd';
+import { Divider, List, Row, Tabs, Typography, Avatar as AntAva } from 'antd';
 import Avatar from '../components/common/Avatar';
+import groupService from '@/services/group.service';
+import GroupModel from '@/model/GroupModel';
 
 const { Text } = Typography;
+
+interface ListItem {
+  title: string;
+}
 interface TelegramWebAppUser {
   id: number;
   first_name: string;
@@ -15,9 +21,54 @@ interface TelegramWebAppUser {
   language_code?: string;
 }
 
+const listFrs: ListItem[] = [
+  {
+    title: 'Friend 1',
+  },
+  {
+    title: 'Friend 2',
+  },
+  {
+    title: 'Friend 3',
+  },
+  {
+    title: 'Friend 4',
+  },
+];
+
+const listActivities: ListItem[] = [
+  {
+    title: 'Activities 1',
+  },
+  {
+    title: 'Activities 2',
+  },
+  {
+    title: 'Activities 3',
+  },
+  {
+    title: 'Activities 4',
+  },
+];
+
+const header = [
+  {
+    title: 'Friends',
+  },
+  {
+    title: 'Groups',
+  },
+  {
+    title: 'Activities',
+  },
+];
+
 function Home() {
+  const [activeTab, setActiveTab] = useState('1');
+  const [tabData, setTabData] = useState([[], [], []]);
+
   // const { network } = useTonConnect();
-  const [, setUser] = useState<TelegramWebAppUser | null>(null);
+  const [user, setUser] = useState<TelegramWebAppUser | null>(null);
   useEffect(() => {
     const initTelegramWebApp = () => {
       const tg = window.Telegram.WebApp;
@@ -74,13 +125,58 @@ function Home() {
     return cleanup;
   }, []);
 
+  useEffect(() => {
+    const fetchData = async (tabIndex) => {
+      try {
+        // https://splitwise.silicales.com/94006370-53ac-4eae-a0aa-72c0885c5e62/groups
+        // const response = await fetch(`https://api.example.com/data?tab=${tabIndex}`);
+        var data: any = listFrs;
+
+        if (tabIndex === '1') {
+          data = listFrs;
+        } else if (tabIndex === '2') {
+          groupService
+            .getGroupById(user?.id.toString() ?? '')
+            .then((res) => {
+              console.log('res', res);
+              data = res;
+            })
+            .catch((err) => {
+              data = [];
+              console.log('err', err);
+            });
+        } else {
+          data = listActivities;
+        }
+        setTabData((prevData) => {
+          const newData: any = [...prevData];
+          newData[parseInt(tabIndex) - 1] = data;
+          return newData;
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(activeTab);
+  }, [activeTab, user]);
+
+  const renderItemForGroups = (item: GroupModel, index: number) => (
+    <List.Item>
+      <List.Item.Meta
+        avatar={<AntAva src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
+        title={item.group_name}
+        description={item.group_description ?? ''}
+      />
+    </List.Item>
+  );
   return (
     <div className='wrapper'>
       <Row>
-        <Avatar name='John Doe' />
+        <Avatar name={user?.first_name ?? 'John Doe'} />
       </Row>
       <Row>
-        <Text className='white-1'>John Doe</Text>
+        <Text className='white-1'>{user?.first_name ?? 'John Doe'}</Text>
       </Row>
       <div className='wallet' style={{ margin: '1rem' }}>
         <div className='wallet-column'>
@@ -104,12 +200,48 @@ function Home() {
             className='tab'
             defaultActiveKey='1'
             centered
+            onChange={(key) => {
+              setActiveTab(key);
+            }}
             items={new Array(3).fill(null).map((_, i) => {
               const id = String(i + 1);
               return {
-                label: `Tab ${id}`,
+                label: header[i].title,
                 key: id,
-                children: `Content of Tab Pane ${id}`,
+                children: (
+                  <List
+                    itemLayout='horizontal'
+                    dataSource={tabData[i]}
+                    renderItem={(item: any, index) => {
+                      switch (id) {
+                        case '1': // Friends
+                          return (
+                            <List.Item>
+                              <List.Item.Meta
+                                avatar={<AntAva src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
+                                title={item.title ?? ''}
+                                description='Friends, Groups, Activities'
+                              />
+                            </List.Item>
+                          );
+                        case '2': // Groups
+                          return renderItemForGroups(item, index);
+                        case '3': // Activities
+                          return (
+                            <List.Item>
+                              <List.Item.Meta
+                                avatar={<AntAva src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
+                                title={item.title ?? ''}
+                                description='Friends, Groups, Activities'
+                              />
+                            </List.Item>
+                          );
+                        default:
+                          return null;
+                      }
+                    }}
+                  />
+                ),
               };
             })}
           />
