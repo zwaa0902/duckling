@@ -3,6 +3,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
+const isProdMode = process.env.NODE_ENV === 'production';
+
 // init i18next
 // for all options read: https://www.i18next.com/overview/configuration-options
 i18n
@@ -29,7 +31,7 @@ i18n
     defaultNS: 'translation',
     ns: ['translation'],
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: isProdMode ? '/duckling/locales/{{lng}}/{{ns}}.json' : '/locales/{{lng}}/{{ns}}.json',
     },
   });
 
