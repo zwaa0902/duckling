@@ -24,7 +24,7 @@ export const aliases = {
 };
 
 export default defineConfig(({ mode }) => ({
-  base: ((process.env.GITHUB_REPOSITORY ?? '') + '/').match(/(\/.*)/)?.[1],
+  base: process.env.VITE_BASE_URL || '/',
   server: {
     host: '0.0.0.0',
     open: true,
