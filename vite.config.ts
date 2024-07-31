@@ -129,11 +129,11 @@ export default defineConfig(({ mode }) => ({
       injectManifest: {
         swDest: 'dist/sw.js',
       },
-      manifest: {
-        name: 'Duckling',
-        short_name: 'Duckling',
-        prefer_related_applications: true,
-      },
+      // manifest: {
+      //   name: 'Duckling',
+      //   short_name: 'Duckling',
+      //   prefer_related_applications: true,
+      // },
     }),
   ],
 }));
