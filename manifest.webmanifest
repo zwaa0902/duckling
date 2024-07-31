@@ -1,1 +1,1 @@
-{"name":"Duckling","short_name":"Duckling","start_url":"/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/","prefer_related_applications":true}
+{"name":"ton-starter-twa-vite","short_name":"ton-starter-twa-vite","start_url":"/duckling/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/duckling/"}
