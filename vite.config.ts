@@ -36,15 +36,19 @@ export default defineConfig(({ mode }) => ({
   define: {
     'import.meta.env.VITE_APP_VERSION': JSON.stringify(process.env.CI_COMMIT_SHORT_SHA) || '1.0',
   },
-  envPrefix: 'ABS',
+  envPrefix: 'DCK',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.json'],
     alias: aliases,
+  },
+  optimizeDeps: {
+    exclude: ['fsevents'],
   },
   build: {
     sourcemap: !isProdMode,
     minify: 'terser',
     rollupOptions: {
+      external: ['fsevents'],
       output: {
         manualChunks: {
           antd: ['antd'],
@@ -89,10 +93,9 @@ export default defineConfig(({ mode }) => ({
             'react-redux',
             'react-secure-storage',
             'redux-persist',
-            'socket.io-client',
             'uuid',
           ],
-          loggingTracking: ['mixpanel-browser', '@sentry/react', 'ga-gtag'],
+          loggingTracking: ['ga-gtag'],
           // else: use index.[id].js
         },
       },
@@ -126,24 +129,10 @@ export default defineConfig(({ mode }) => ({
         enabled: false,
         type: 'module',
       },
-      injectManifest: {
-        swDest: 'dist/sw.js',
-      },
       manifest: {
-        name: 'ABS Invest',
-        short_name: 'ABS',
+        name: 'Duckling',
+        short_name: 'Duckling',
         prefer_related_applications: true,
-
-        related_applications: [
-          {
-            platform: 'play',
-            url: 'https://play.google.com/store/apps/details?id=vn.abs.app',
-          },
-          {
-            platform: 'itunes',
-            url: 'https://apps.apple.com/vn/app/abs-invest/id1633376332',
-          },
-        ],
       },
     }),
   ],

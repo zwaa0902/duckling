@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import { ActionReducerMapBuilder, AnyAction, isPending, isFulfilled, isRejected } from '@reduxjs/toolkit';
-import { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
 import i18n from '@/i18n';
 
 export type BaseStateStatusTypes = 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -87,14 +86,14 @@ function _isRejected(sliceName: string, action: any) {
   return isRejected(action) && _.startsWith(action.type, sliceName);
 }
 
-export function setDefaultMatcherBuilder(sliceName: string, builder: ActionReducerMapBuilder<NoInfer<any>>) {
+export function setDefaultMatcherBuilder(sliceName: string, builder: ActionReducerMapBuilder<any>) {
   builder
     .addMatcher((action: AnyAction) => _isPending(sliceName, action), pendingReducer)
     .addMatcher((action: AnyAction) => _isFulfilled(sliceName, action), fulfilledReducer)
     .addMatcher((action: AnyAction) => _isRejected(sliceName, action), rejectedReducer);
 }
 
-export function setDefaultCaseBuilder(sliceName: string, builder: ActionReducerMapBuilder<NoInfer<any>>) {
+export function setDefaultCaseBuilder(sliceName: string, builder: ActionReducerMapBuilder<any>) {
   builder.addDefaultCase((state: any, action: AnyAction) => {
     if (_isPending(sliceName, action)) {
       pendingReducer(state);
