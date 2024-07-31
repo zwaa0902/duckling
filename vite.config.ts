@@ -125,6 +125,9 @@ export default defineConfig(({ mode }) => ({
         enabled: false,
         type: 'module',
       },
+      injectManifest: {
+        swDest: 'dist/sw.js',
+      },
       manifest: {
         name: 'Duckling',
         short_name: 'Duckling',
