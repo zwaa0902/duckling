@@ -22,9 +22,9 @@ export const aliases = {
   '@utils': path.resolve(__dirname, 'src/utils'),
   '/^~/': '',
 };
-
+console.log(process.env.VITE_BASE_URL);
 export default defineConfig(({ mode }) => ({
-  base: process.env.VITE_BASE_URL || '/',
+  base: isProdMode ? '/duckling/' : '/',
   server: {
     host: '0.0.0.0',
     open: true,
