@@ -24,6 +24,7 @@ export const aliases = {
 };
 
 export default defineConfig(({ mode }) => ({
+  base: isProdMode ? '/duckling/' : '/',
   server: {
     host: '0.0.0.0',
     open: true,
@@ -125,11 +126,11 @@ export default defineConfig(({ mode }) => ({
       injectManifest: {
         swDest: 'dist/sw.js',
       },
-      manifest: {
-        name: 'Duckling',
-        short_name: 'Duckling',
-        prefer_related_applications: true,
-      },
+      // manifest: {
+      //   name: 'Duckling',
+      //   short_name: 'Duckling',
+      //   prefer_related_applications: true,
+      // },
     }),
   ],
 }));
