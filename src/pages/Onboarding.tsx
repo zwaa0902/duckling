@@ -14,7 +14,7 @@ function Onboarding() {
           <img src={'./batcom.svg'} alt='Image' />
         </Row>
         <Row className='row'>
-          <Title level={3}>Bát cơm</Title>
+          <Title level={3}>Cơm Server</Title>
         </Row>
       </Col>
       <Col>

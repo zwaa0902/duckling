@@ -84,7 +84,6 @@ function Home() {
       tg.ready();
 
       if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-        onSuccessNotification(tg.initDataUnsafe.user.toString());
         const userInfo = tg.initDataUnsafe.user as TelegramWebAppUser;
         setUser(userInfo);
         userService
