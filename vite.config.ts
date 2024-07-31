@@ -41,14 +41,10 @@ export default defineConfig(({ mode }) => ({
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.json'],
     alias: aliases,
   },
-  optimizeDeps: {
-    exclude: ['fsevents'],
-  },
   build: {
     sourcemap: !isProdMode,
     minify: 'terser',
     rollupOptions: {
-      external: ['fsevents'],
       output: {
         manualChunks: {
           antd: ['antd'],
