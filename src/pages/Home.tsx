@@ -20,6 +20,9 @@ interface TelegramWebAppUser {
   username?: string;
   language_code?: string;
 }
+interface ExtendedTelegramWebAppUser extends TelegramWebAppUser {
+  channel: string;
+}
 
 const listFrs: ListItem[] = [
   {
@@ -84,7 +87,10 @@ function Home() {
       tg.ready();
 
       if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-        const userInfo = tg.initDataUnsafe.user as TelegramWebAppUser;
+        const userInfo: ExtendedTelegramWebAppUser = {
+          ...tg.initDataUnsafe.user,
+          channel: 'telegram',
+        };
         setUser(userInfo);
         userService
           .getUserInfo(userInfo.id.toString())
@@ -134,7 +140,7 @@ function Home() {
           data = listFrs;
         } else if (tabIndex === '2') {
           groupService
-            .getGroupById(user?.id.toString() ?? '')
+            .getGroupById(user?.id.toString() ?? '123')
             .then((res) => {
               data = res;
             })

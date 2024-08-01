@@ -1,6 +1,6 @@
 import request from '@utils/request';
 
-const BASE_URL = `${import.meta.env.DCK_WISE_API_ROOT}/user`;
+const BASE_URL = `${import.meta.env.DCK_WISE_API_ROOT}`;
 
 console.log(import.meta.env.DCK_WISE_API_ROOT);
 
