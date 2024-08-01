@@ -127,8 +127,6 @@ function Home() {
   useEffect(() => {
     const fetchData = async (tabIndex) => {
       try {
-        // https://splitwise.silicales.com/94006370-53ac-4eae-a0aa-72c0885c5e62/groups
-        // const response = await fetch(`https://api.example.com/data?tab=${tabIndex}`);
         var data: any = listFrs;
 
         if (tabIndex === '1') {
