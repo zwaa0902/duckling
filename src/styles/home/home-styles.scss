@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: $black-1;
+  background-color: $orange-main;
   box-sizing: border-box;
   height: 100vh;
   overflow: hidden; // New line
@@ -23,7 +23,7 @@ body {
   height: 50px;
   border-radius: 50%;
   color: #fff;
-  background: $yellow;
+  background: $normal;
   display: flex;
   justify-content: center;
   align-items: center;

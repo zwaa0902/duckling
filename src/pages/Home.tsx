@@ -134,7 +134,7 @@ function Home() {
           data = listFrs;
         } else if (tabIndex === '2') {
           groupService
-            .getGroupById(user?.id.toString() ?? '5206533931')
+            .getGroupById(user?.id.toString() ?? '')
             .then((res) => {
               data = res;
             })
@@ -142,8 +142,6 @@ function Home() {
               data = [];
               console.log('err', err);
             });
-
-          console.log('data', data);
         } else {
           data = listActivities;
         }
@@ -169,6 +167,7 @@ function Home() {
       />
     </List.Item>
   );
+
   return (
     <div className='wrapper'>
       <Row>

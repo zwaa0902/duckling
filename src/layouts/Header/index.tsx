@@ -28,7 +28,7 @@ function AppHeader() {
       <Drawer title='' onClose={onClose} open={open} placement={'left'}>
         <Link to='/about'>About</Link>
       </Drawer>
-      <Text className='body-1 white-1'>Cơm server</Text>
+      <Text className='body-1 white-1'>Splito</Text>
       <IconButton onClick={showDrawer}>
         <MoreOutlined />
       </IconButton>

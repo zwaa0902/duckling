@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .layout {
   padding: 16px;
   display: flex;
@@ -12,7 +14,7 @@
 }
 
 .custom-button {
-  background-color: #222020;
+  background-color: $orange-main;
   border-radius: 8px;
   width: 100%;
   color: white;
