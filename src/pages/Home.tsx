@@ -126,22 +126,24 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async (tabIndex) => {
+      console.log(typeof tabIndex);
       try {
-        var data: any = listFrs;
+        var data: any = [];
 
         if (tabIndex === '1') {
           data = listFrs;
         } else if (tabIndex === '2') {
           groupService
-            .getGroupById(user?.id.toString() ?? '')
+            .getGroupById(user?.id.toString() ?? '5206533931')
             .then((res) => {
-              console.log('res', res);
               data = res;
             })
             .catch((err) => {
               data = [];
               console.log('err', err);
             });
+
+          console.log('data', data);
         } else {
           data = listActivities;
         }

@@ -9,7 +9,7 @@ async function getUserInfo(id: string) {
 }
 
 async function register(data: any) {
-  return request.post(`${BASE_URL}/user`, data);
+  return request.post(`${BASE_URL}/users`, data);
 }
 
 export default {
