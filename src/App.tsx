@@ -52,11 +52,11 @@ const router = createBrowserRouter(
 function App() {
   return (
     <Provider store={store}>
-      {/* //   <PersistGate loading={null} persistor={persistor}> */}
-      <ConfigProvider theme={themeConfig}>
-        <RouterProvider router={router} />
-      </ConfigProvider>
-      {/* //   </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <ConfigProvider theme={themeConfig}>
+          <RouterProvider router={router} />
+        </ConfigProvider>
+      </PersistGate>
     </Provider>
   );
 }

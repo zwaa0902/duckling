@@ -1,11 +1,24 @@
-import { autoBatchEnhancer, combineReducers, configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore } from 'redux-persist';
+import localForage from 'localforage';
 
 import user from './slices/user';
+import persistReducer from 'redux-persist/es/persistReducer';
 const preloadedState = {};
 
-const rootReducer = combineReducers({
+const userPersistedReducer = persistReducer(
+  {
+    key: 'user',
+    storage: localForage.createInstance({
+      name: 'user',
+      driver: localForage.INDEXEDDB,
+    }),
+  },
   user,
+);
+
+const rootReducer = combineReducers({
+  user: userPersistedReducer,
 });
 
 export const store = configureStore({
