@@ -1,13 +1,17 @@
-import '@styles/App.scss';
-import '@styles/normalize.scss';
-import '@twa-dev/sdk';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from '@redux/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './App.css';
-
 import { ConfigProvider } from 'antd';
 import AppLayout from './layouts';
 import Home from './pages/Home';
 import Onboarding from './pages/Onboarding';
+import Groups from './pages/Groups';
+
+import '@styles/App.scss';
+import '@styles/normalize.scss';
+import '@twa-dev/sdk';
+import './App.css';
 
 const themeConfig = {
   token: {
@@ -34,8 +38,8 @@ const router = createBrowserRouter(
           element: <Home />,
         },
         {
-          path: 'about',
-          element: <About />,
+          path: 'groups',
+          element: <Groups />,
         },
       ],
     },
@@ -45,25 +49,15 @@ const router = createBrowserRouter(
   },
 );
 
-function About() {
-  return (
-    <>
-      <main>
-        <h2>Who are we?</h2>
-        <p>That feels like an existential question, dont you think?</p>
-      </main>
-      {/* <nav>
-        <Link to='/'>Home</Link>
-      </nav> */}
-    </>
-  );
-}
-
 function App() {
   return (
-    <ConfigProvider theme={themeConfig}>
-      <RouterProvider router={router} />
-    </ConfigProvider>
+    <Provider store={store}>
+      {/* //   <PersistGate loading={null} persistor={persistor}> */}
+      <ConfigProvider theme={themeConfig}>
+        <RouterProvider router={router} />
+      </ConfigProvider>
+      {/* //   </PersistGate> */}
+    </Provider>
   );
 }
 

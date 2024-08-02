@@ -16,10 +16,6 @@ export const store = configureStore({
     }),
   devTools: import.meta.env.DEV,
   preloadedState,
-  enhancers: (existingEnhancers: any) => {
-    // Add the autobatch enhancer to the store setup
-    return existingEnhancers.concat(autoBatchEnhancer());
-  },
 });
 
 export const persistor = persistStore(store);

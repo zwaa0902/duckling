@@ -2,26 +2,23 @@ import { useEffect, useState } from 'react';
 
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
 import userService from '@/services/user.service';
-import '@styles/home/home-styles.scss';
 import { Divider, List, Row, Tabs, Typography, Avatar as AntAva } from 'antd';
 import Avatar from '../components/common/Avatar';
 import groupService from '@/services/group.service';
 import GroupModel from '@/model/GroupModel';
+import TelegramWebAppUserModel from '@/model/TelegramWebAppUserModel';
+
+import '@styles/home/home-styles.scss';
+import { useAppDispatch } from '@/hooks/common';
+import { setUserInfo } from '@/redux/slices/user';
 
 const { Text } = Typography;
 
+interface ExtendedTelegramWebAppUser extends TelegramWebAppUserModel {
+  channel: string;
+}
 interface ListItem {
   title: string;
-}
-interface TelegramWebAppUser {
-  id: number;
-  first_name: string;
-  last_name?: string;
-  username?: string;
-  language_code?: string;
-}
-interface ExtendedTelegramWebAppUser extends TelegramWebAppUser {
-  channel: string;
 }
 
 const listFrs: ListItem[] = [
@@ -65,14 +62,23 @@ const header = [
     title: 'Activities',
   },
 ];
-
+const userTest: ExtendedTelegramWebAppUser = {
+  id: 5206533931,
+  first_name: 'Nga',
+  last_name: 'Trinh',
+  username: 'ngatrinjh',
+  language_code: 'en',
+  channel: 'telegram',
+};
 function Home() {
   const [activeTab, setActiveTab] = useState('1');
   const [tabData, setTabData] = useState([[], [], []]);
-
+  const dispatch = useAppDispatch();
   // const { network } = useTonConnect();
-  const [user, setUser] = useState<TelegramWebAppUser | null>(null);
+  const [user, setUser] = useState<TelegramWebAppUserModel | null>(null);
   useEffect(() => {
+    dispatch(setUserInfo(userTest));
+
     const initTelegramWebApp = () => {
       const tg = window.Telegram.WebApp;
 
@@ -263,20 +269,6 @@ function Home() {
           </FlexBoxRow>
           <Counter />
           <TransferTon /> */}
-      {/* <div>
-          <h2>Telegram Web App</h2>
-          {user ? (
-            <div>
-              <p>ID: {user.id}</p>
-              <p>First Name: {user.first_name}</p>
-              {user.last_name && <p>Last Name: {user.last_name}</p>}
-              {user.username && <p>Username: {user.username}</p>}
-              {user.language_code && <p>Language Code: {user.language_code}</p>}
-            </div>
-          ) : (
-            <p>Loading user information...</p>
-          )}
-        </div> */}
     </div>
   );
 }

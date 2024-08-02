@@ -20,6 +20,13 @@ const userSlice = createSlice({
     resetUserInfo: () => {
       return initialState;
     },
+    setUserInfo(state, action) {
+      state.user = action.payload;
+    },
+    // Action to clear user information
+    clearUserInfo(state) {
+      state.user = null;
+    },
   },
   extraReducers(builder) {
     builder.addCase(getUserInfo.fulfilled, (state, action) => {
@@ -34,5 +41,5 @@ export const getUserInfo = createAsyncThunk('user/getInfo', async (id: string, t
 });
 
 const { reducer, actions } = userSlice;
-export const { resetUserInfo } = actions;
+export const { resetUserInfo, setUserInfo, clearUserInfo } = actions;
 export default reducer;

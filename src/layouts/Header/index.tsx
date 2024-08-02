@@ -25,8 +25,13 @@ function AppHeader() {
       <IconButton onClick={showDrawer}>
         <MenuOutlined />
       </IconButton>
-      <Drawer title='' onClose={onClose} open={open} placement={'left'}>
-        <Link to='/about'>About</Link>
+      <Drawer title='Splito' onClose={onClose} open={open} placement={'left'} width={240}>
+        <Link style={{ color: 'orange' }} to='/home' onClick={() => onClose()}>
+          Home
+        </Link>
+        <Link style={{ color: 'orange' }} to='/groups' onClick={() => onClose()}>
+          Groups
+        </Link>
       </Drawer>
       <Text className='body-1 white-1'>Splito</Text>
       <IconButton onClick={showDrawer}>
