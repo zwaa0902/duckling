@@ -1,4 +1,4 @@
-import { Typography, Row, Col, List, Avatar, Button } from 'antd';
+import { Typography, Row, Col, List, Avatar, Button, Empty } from 'antd';
 
 import { useEffect, useState } from 'react';
 import groupService from '@/services/group.service';
@@ -79,16 +79,14 @@ const groupListTest: GroupModel[] = [
   },
 ];
 function Groups() {
-  // const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   const [groups, setGroups] = useState<any>([]);
 
   useEffect(() => {
     groupService
-      .getGroupById('123')
+      .getGroupById(user.user.id ?? '')
       .then((res) => {
-        console.log('user', res);
-
         setGroups(res);
       })
       .catch((err) => {
@@ -99,14 +97,17 @@ function Groups() {
   return (
     <div className='gr-wrapper'>
       <Row gutter={16} style={{ width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Text>Total groups: {groupListTest.length}</Text>
+        <Text>Total groups: {groups.length}</Text>
         <Button type='default' onClick={() => navigate('/create-group')}>
           Create
         </Button>
       </Row>
       <List
         itemLayout='horizontal'
-        dataSource={groupListTest}
+        dataSource={groups}
+        locale={{
+          emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description='No Groups Available' />,
+        }}
         renderItem={(item: any, index) => {
           return (
             <List.Item>
