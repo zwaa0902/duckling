@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
 import userService from '@/services/user.service';
 import { Divider, List, Row, Tabs, Typography, Avatar as AntAva } from 'antd';
-import Avatar from '../components/common/Avatar';
+import Avatar from '../../components/common/Avatar';
 import groupService from '@/services/group.service';
 import GroupModel from '@/model/GroupModel';
 import TelegramWebAppUserModel from '@/model/TelegramWebAppUserModel';
