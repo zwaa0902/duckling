@@ -9,8 +9,8 @@ import GroupModel from '@/model/GroupModel';
 import TelegramWebAppUserModel from '@/model/TelegramWebAppUserModel';
 
 import '@styles/home/home-styles.scss';
-import { useAppDispatch } from '@/hooks/common';
-import { setUserInfo } from '@/redux/slices/user';
+// import { useAppDispatch } from '@/hooks/common';
+// import { setUserInfo } from '@/redux/slices/user';
 
 const { Text } = Typography;
 
@@ -62,22 +62,24 @@ const header = [
     title: 'Activities',
   },
 ];
-const userTest: ExtendedTelegramWebAppUser = {
-  id: 5206533931,
-  first_name: 'Nga',
-  last_name: 'Trinh',
-  username: 'ngatrinjh',
-  language_code: 'en',
-  channel: 'telegram',
-};
+
+// const userTest: ExtendedTelegramWebAppUser = {
+//   id: 5206533931,
+//   first_name: 'Nga',
+//   last_name: 'Trinh',
+//   username: 'ngatrinjh',
+//   language_code: 'en',
+//   channel: 'telegram',
+// };
+
 function Home() {
   const [activeTab, setActiveTab] = useState('1');
   const [tabData, setTabData] = useState([[], [], []]);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   // const { network } = useTonConnect();
   const [user, setUser] = useState<TelegramWebAppUserModel | null>(null);
   useEffect(() => {
-    dispatch(setUserInfo(userTest));
+    // dispatch(setUserInfo(userTest));
 
     const initTelegramWebApp = () => {
       const tg = window.Telegram.WebApp;
