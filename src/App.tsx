@@ -13,6 +13,7 @@ import '@styles/normalize.scss';
 import '@twa-dev/sdk';
 import './App.css';
 import CreateGroup from './pages/Groups/CreateGroup';
+import DetailGroup from './pages/Groups/DetailGroup';
 
 const themeConfig = {
   token: {
@@ -45,6 +46,10 @@ const router = createBrowserRouter(
         {
           path: 'create-group',
           element: <CreateGroup />,
+        },
+        {
+          path: 'detail-group',
+          element: <DetailGroup />,
         },
       ],
     },

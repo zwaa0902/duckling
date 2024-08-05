@@ -7,16 +7,22 @@
   overflow: hidden;
   background-color: white;
   padding: 16px;
+  height: 100vh;
+  overflow: auto;
 }
 
 .create-gr-wrapper {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  overflow: hidden;
+  height: 100vh; /* Full viewport height */
   background-color: white;
   padding: 16px;
-  height: 100vh;
+  overflow: auto;
+}
+
+.content {
+  flex: 1; /* Take up available space */
+  overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
 form {
@@ -30,20 +36,23 @@ form > .ant-row {
   flex-wrap: nowrap; // Prevent wrapping if needed
 }
 
-button.continue-button {
-  margin-top: auto; // Push the button to the bottom
-  margin-bottom: auto;
+.footer {
+  padding: 16px 0;
+  background-color: #fff;
+  margin-top: auto;
+  margin-bottom: 24px;
 }
+
 @media (min-width: 660px) {
   .create-gr-wrapper {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    overflow: hidden;
+    height: 100vh; /* Full viewport height */
     background-color: white;
     padding: 16px;
     align-items: center;
     height: 100vh;
+    overflow: auto;
   }
 }
 .circle-container {

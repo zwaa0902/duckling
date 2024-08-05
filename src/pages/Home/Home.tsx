@@ -64,14 +64,14 @@ const header = [
   },
 ];
 
-// const userTest: ExtendedTelegramWebAppUser = {
-//   id: 5206533931,
-//   first_name: 'Nga',
-//   last_name: 'Trinh',
-//   username: 'ngatrinjh',
-//   language_code: 'en',
-//   channel: 'telegram',
-// };
+const userTest: ExtendedTelegramWebAppUser = {
+  id: 5206533931,
+  first_name: 'Nga',
+  last_name: 'Trinh',
+  username: 'ngatrinjh',
+  language_code: 'en',
+  channel: 'telegram',
+};
 
 function Home() {
   const dispatch = useAppDispatch();
@@ -81,6 +81,8 @@ function Home() {
   // const { network } = useTonConnect();
   const [user, setUser] = useState<TelegramWebAppUserModel | null>(null);
   useEffect(() => {
+    dispatch(setUserInfo(userTest));
+
     const initTelegramWebApp = () => {
       const tg = window.Telegram.WebApp;
 

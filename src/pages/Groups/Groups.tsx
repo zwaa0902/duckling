@@ -41,7 +41,11 @@ function Groups() {
         }}
         renderItem={(item: any, index) => {
           return (
-            <List.Item>
+            <List.Item
+              onClick={() => {
+                navigate('/detail-group', { state: { group: item } });
+              }}
+            >
               <List.Item.Meta
                 avatar={<Avatar src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
                 title={item.group_name}

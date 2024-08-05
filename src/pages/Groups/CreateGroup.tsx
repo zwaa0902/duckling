@@ -103,87 +103,98 @@ function CreateGroup() {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
+        style={{ maxWidth: '600px' }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete='off'
       >
-        <Row style={{ alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
-          <Col>
-            <Button
-              onClick={handleCameraClick}
-              style={{
-                width: '52px',
-                height: '52px',
-                borderRadius: '10px',
-                background: image
-                  ? `url(${image}) no-repeat center center / cover` // Use shorthand background property
-                  : 'transparent',
-                border: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              {!image && <CameraOutlined />}
-            </Button>
-            <input type='file' accept='image/*' ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
-          </Col>
-          <Col flex='1'>
-            <Form.Item<GroupModel>
-              label='Group name'
-              name='group_name'
-              rules={[{ required: true, message: 'Field required' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-        </Row>
+        <div className='content'>
+          <Row style={{ alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+            <Col>
+              <Button
+                onClick={handleCameraClick}
+                style={{
+                  width: '52px',
+                  height: '52px',
+                  borderRadius: '10px',
+                  background: image
+                    ? `url(${image}) no-repeat center center / cover` // Use shorthand background property
+                    : 'transparent',
+                  border: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {!image && <CameraOutlined />}
+              </Button>
+              <input
+                type='file'
+                accept='image/*'
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                onChange={handleFileChange}
+              />
+            </Col>
+            <Col flex='1'>
+              <Form.Item<GroupModel>
+                label='Group name'
+                name='group_name'
+                rules={[{ required: true, message: 'Field required' }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
 
-        <Form.Item<GroupModel> label='Description' name='group_description' rules={[{}]}>
-          <Input />
-        </Form.Item>
-        <Text>Categories</Text>
-        <div className='horizontal-categories'>
-          {categories.map((category) => (
-            <div
-              key={category.key}
-              className={`category-item ${selectedCategory === category.key ? 'selected' : ''}`}
-              onClick={() => handleCategorySelect(category.key)}
-            >
-              <div className='icon'>{category.icon}</div>
-              <span>{category.text}</span>
-            </div>
-          ))}
-        </div>
-        {friendsSelected.length > 0 && (
-          <div className='horizontal-container'>
-            <div className='horizontal-dashed'>
-              {friendsSelected.map((user, index) => (
-                <Avatar key={index} src={user.image} alt={user.name} className='horizontal-avatar' />
-              ))}
-            </div>
+          <Form.Item<GroupModel> label='Description' name='group_description' rules={[{}]}>
+            <Input />
+          </Form.Item>
+          <Text>Categories</Text>
+          <div className='horizontal-categories'>
+            {categories.map((category) => (
+              <div
+                key={category.key}
+                className={`category-item ${selectedCategory === category.key ? 'selected' : ''}`}
+                onClick={() => handleCategorySelect(category.key)}
+              >
+                <div className='icon'>{category.icon}</div>
+                <span>{category.text}</span>
+              </div>
+            ))}
           </div>
-        )}
-        <Text>Friends</Text>
-        <div className='scrollable-container' style={{ height: '400px', overflowY: 'auto' }}>
-          <List
-            itemLayout='horizontal'
-            dataSource={users}
-            renderItem={(item, index) => (
-              <List.Item>
-                <List.Item.Meta
-                  avatar={<Avatar key={index} src={item.image} alt={item.name} className='horizontal-avatar' />}
-                  title={item.name}
-                  description={item.phone ?? ''}
-                />
-                <Checkbox onChange={(e) => handleCheckboxChange(e.target.checked, item)} />
-              </List.Item>
-            )}
-          />
+          {friendsSelected.length > 0 && (
+            <div className='horizontal-container'>
+              <div className='horizontal-dashed'>
+                {friendsSelected.map((user, index) => (
+                  <Avatar key={index} src={user.image} alt={user.name} className='horizontal-avatar' />
+                ))}
+              </div>
+            </div>
+          )}
+          <Text>Friends</Text>
+          <div className='scrollable-container' style={{ height: '400px', overflowY: 'auto' }}>
+            <List
+              itemLayout='horizontal'
+              dataSource={users}
+              renderItem={(item, index) => (
+                <List.Item>
+                  <List.Item.Meta
+                    avatar={<Avatar key={index} src={item.image} alt={item.name} className='horizontal-avatar' />}
+                    title={item.name}
+                    description={item.phone ?? ''}
+                  />
+                  <Checkbox onChange={(e) => handleCheckboxChange(e.target.checked, item)} />
+                </List.Item>
+              )}
+            />
+          </div>
         </div>
-        <Button type='primary' htmlType='submit' block className='continue-button'>
-          Continue
-        </Button>
+        <div className='footer'>
+          <Button type='primary' htmlType='submit' block>
+            Continue
+          </Button>
+        </div>
       </Form>
     </div>
   );
