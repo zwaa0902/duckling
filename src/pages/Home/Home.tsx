@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
-import userService from '@/services/user.service';
 import { Divider, List, Row, Tabs, Typography, Avatar as AntAva } from 'antd';
-import Avatar from '../../components/common/Avatar';
-import groupService from '@/services/group.service';
-import GroupModel from '@/model/GroupModel';
+import { useAppDispatch } from '@/hooks/common';
+import userService from '@/services/user.service';
+import { setUserInfo } from '@/redux/slices/user';
 import TelegramWebAppUserModel from '@/model/TelegramWebAppUserModel';
 
+import Avatar from '@components/common/Avatar';
+import groupService from '@/services/group.service';
+import GroupModel from '@/model/GroupModel';
+
 import '@styles/home/home-styles.scss';
-// import { useAppDispatch } from '@/hooks/common';
-// import { setUserInfo } from '@/redux/slices/user';
 
 const { Text } = Typography;
 
@@ -73,14 +74,13 @@ const header = [
 // };
 
 function Home() {
+  const dispatch = useAppDispatch();
+
   const [activeTab, setActiveTab] = useState('1');
   const [tabData, setTabData] = useState([[], [], []]);
-  // const dispatch = useAppDispatch();
   // const { network } = useTonConnect();
   const [user, setUser] = useState<TelegramWebAppUserModel | null>(null);
   useEffect(() => {
-    // dispatch(setUserInfo(userTest));
-
     const initTelegramWebApp = () => {
       const tg = window.Telegram.WebApp;
 
@@ -100,6 +100,7 @@ function Home() {
           channel: 'telegram',
         };
         setUser(userInfo);
+        dispatch(setUserInfo(userInfo));
         userService
           .getUserInfo(userInfo.id.toString())
           .then((res) => {
