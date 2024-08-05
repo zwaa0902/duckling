@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .gr-wrapper {
   display: flex;
   flex-direction: column;
@@ -5,4 +7,149 @@
   overflow: hidden;
   background-color: white;
   padding: 16px;
+}
+
+.create-gr-wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: white;
+  padding: 16px;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1; // Allow the form to take up the available space
+}
+
+form > .ant-row {
+  flex-wrap: nowrap; // Prevent wrapping if needed
+}
+
+button.continue-button {
+  margin-top: auto; // Push the button to the bottom
+  margin-bottom: auto;
+}
+@media (min-width: 660px) {
+  .create-gr-wrapper {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: white;
+    padding: 16px;
+    align-items: center;
+    height: 100vh;
+  }
+}
+.circle-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border: 1px dashed #ddd;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.circle-avatar {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+}
+
+.add-button {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  font-size: 40px;
+  color: red;
+  background: white;
+  border-radius: 50%;
+}
+.horizontal-container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.horizontal-dashed {
+  border: 1px dashed #ddd;
+  border-radius: 50px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.horizontal-avatar {
+  margin: 0 -5px;
+}
+
+.horizontal-categories {
+  display: flex;
+  justify-content: space-around;
+  margin: 8px 0 16px;
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  gap: 8px;
+}
+
+.horizontal-categories::-webkit-scrollbar {
+  display: none;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  gap: 6px;
+  background-color: #f0f0f0;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+  &.selected {
+    transition: background-color 0.3s;
+    border: 1px solid $orange-main;
+    border-radius: 20px;
+  }
+  .icon {
+    background-color: white;
+    padding: 4px;
+    border-radius: 50%;
+    display: inline-flex;
+  }
+}
+.scrollable-container::-webkit-scrollbar {
+  width: 0; /* Hide scrollbar width */
+  height: 0; /* Hide horizontal scrollbar if applicable */
+}
+
+/* Hide scrollbar but keep scrolling for Firefox */
+.scrollable-container {
+  padding: 0 16px;
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar but keep scrolling for Edge and IE */
+.scrollable-container {
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+.horizontal-container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
 }

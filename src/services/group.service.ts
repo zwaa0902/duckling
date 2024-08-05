@@ -7,7 +7,7 @@ async function getGroupById(id: string) {
 }
 
 async function create(data: any) {
-  return request.post(`${BASE_URL}/users`, data);
+  return request.post(`${BASE_URL}/groups`, data);
 }
 
 export default {

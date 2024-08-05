@@ -11,6 +11,13 @@
 .ant-input {
   border-radius: 20px;
 }
+.ant-form-item {
+  margin-bottom: 10px;
+}
+
+.ant-form-item .ant-form-item-label {
+  padding-bottom: 0;
+}
 
 .App-logo {
   height: 40vmin;
