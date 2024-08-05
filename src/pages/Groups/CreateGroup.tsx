@@ -173,7 +173,7 @@ function CreateGroup() {
             </div>
           )}
           <Text>Friends</Text>
-          <div className='scrollable-container' style={{ height: '400px', overflowY: 'auto' }}>
+          <div className='scrollable-container' style={{ height: '350px', overflowY: 'auto' }}>
             <List
               itemLayout='horizontal'
               dataSource={users}
@@ -190,14 +190,18 @@ function CreateGroup() {
             />
           </div>
         </div>
+        <div style={{ height: '32px' }} />
         <div className='footer'>
           <Button
             type='primary'
             htmlType='submit'
             block
             style={{
-              margin: '12px 0 32px',
-              width: '100%',
+              position: 'fixed',
+              bottom: '16px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '90%',
             }}
           >
             Continue
