@@ -4,18 +4,19 @@ import { persistor, store } from '@redux/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 import AppLayout from './layouts';
-import Home from './pages/Home';
-import Onboarding from './pages/Onboarding';
-import Groups from './pages/Groups';
+import Home from './pages/Home/Home';
+import Onboarding from './pages/Onboarding/Onboarding';
+import Groups from './pages/Groups/Groups';
 
 import '@styles/App.scss';
 import '@styles/normalize.scss';
 import '@twa-dev/sdk';
 import './App.css';
+import CreateGroup from './pages/Groups/CreateGroup';
 
 const themeConfig = {
   token: {
-    colorPrimary: '#222020',
+    colorPrimary: '#FFA500',
     colorSuccess: '#32D07B',
     colorWarning: '#F1C40F',
     colorError: '#FE3D2E',
@@ -40,6 +41,10 @@ const router = createBrowserRouter(
         {
           path: 'groups',
           element: <Groups />,
+        },
+        {
+          path: 'create-group',
+          element: <CreateGroup />,
         },
       ],
     },
