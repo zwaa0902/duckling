@@ -191,7 +191,15 @@ function CreateGroup() {
           </div>
         </div>
         <div className='footer'>
-          <Button type='primary' htmlType='submit' block>
+          <Button
+            type='primary'
+            htmlType='submit'
+            block
+            style={{
+              margin: '12px 0 32px',
+              width: '100%',
+            }}
+          >
             Continue
           </Button>
         </div>

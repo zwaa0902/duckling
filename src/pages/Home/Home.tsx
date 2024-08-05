@@ -82,6 +82,7 @@ function Home() {
   const [user, setUser] = useState<TelegramWebAppUserModel | null>(null);
   useEffect(() => {
     // dispatch(setUserInfo(userTest));
+    // setUser(userTest);
 
     const initTelegramWebApp = () => {
       const tg = window.Telegram.WebApp;
@@ -143,22 +144,20 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async (tabIndex) => {
-      console.log(typeof tabIndex);
       try {
-        var data: any = [];
+        let data: any = [];
 
         if (tabIndex === '1') {
           data = listFrs;
         } else if (tabIndex === '2') {
-          groupService
-            .getGroupById(user?.id.toString() ?? '123')
-            .then((res) => {
-              data = res;
-            })
-            .catch((err) => {
-              data = [];
-              console.log('err', err);
-            });
+          try {
+            const res = await groupService.getGroupById(user?.id.toString() ?? '');
+            data = res;
+            console.log('res', res);
+          } catch (err) {
+            data = [];
+            console.log('err', err);
+          }
         } else {
           data = listActivities;
         }
