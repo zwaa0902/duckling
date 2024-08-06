@@ -1,64 +1,60 @@
-/* eslint-disable */
-import React, { memo, useMemo } from 'react';
-import { Breadcrumb, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import { memo, useMemo } from 'react';
+import { Breadcrumb } from 'antd';
+import { useLocation, Link } from 'react-router-dom';
+import { routes } from '@constants/routes'; // Ensure the import path is correct
+import '@styles/common/breadcrumb.scss';
 
-import { menuItems } from '@/constants/app';
-import { routes } from '@/constants/routes';
+const Breadcrumbs = () => {
+  const location = useLocation();
+  const { pathname } = location;
 
-const { Text } = Typography;
-
-interface BreadcrumbsProps {
-  pathname: string;
-}
-
-
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ pathname }) => {
   const BreadcrumbList = useMemo(() => {
+    const pathnames = pathname.split('/').filter((x) => x);
+
+    if (pathname === routes.home || pathname === routes.onboarding) return null; // Hide breadcrumb for homepage and onboarding
+
     const breadcrumbs = [
       {
-        displayText: 'Trang chủ',
-        hasNestedMenu: false,
-        id: 1,
+        displayText: 'Home',
         path: routes.home,
       },
     ];
 
-    for (let item of menuItems) {
-      if (pathname.includes(item.path)) {
-        breadcrumbs.push(item as { displayText: string; hasNestedMenu: boolean; id: number; path: string });
-        if (item.hasNestedMenu) {
-          if (item.nestedMenu) {
-            item.nestedMenu.forEach((nestedItem) => {
-              if (pathname.includes(nestedItem.path)) {
-                breadcrumbs.push(nestedItem);
-              }
-            });
-          }
-          break;
-        }
+    const pathMap = {
+      groups: 'Groups',
+      create: 'Create',
+      detail: 'Detail',
+      // Add other paths here as needed
+    };
+
+    pathnames.forEach((path, index) => {
+      const url = `/${pathnames.slice(0, index + 1).join('/')}`;
+      let displayText = pathMap[path] || path.charAt(0).toUpperCase() + path.slice(1);
+
+      if (url !== routes.onboarding && url !== routes.home) {
+        // Exclude onboarding and handle correct paths
+        breadcrumbs.push({
+          displayText,
+          path: url,
+        });
       }
-    }
+    });
+
     return breadcrumbs.map((breadcrumb, index) => {
       const last = index === breadcrumbs.length - 1;
-
-      if (breadcrumb.path === routes.home) {
-        return (
-          <Breadcrumb.Item key={breadcrumb.path}>
-            <Link to={breadcrumb.path}>{breadcrumb.displayText}</Link>
-          </Breadcrumb.Item>
-        );
-      }
-      return (
+      return last ? (
+        <Breadcrumb.Item key={breadcrumb.path}>{breadcrumb.displayText}</Breadcrumb.Item>
+      ) : (
         <Breadcrumb.Item key={breadcrumb.path}>
-          {last ? <Text>{breadcrumb.displayText}</Text> : <Link to={breadcrumb.path}>{breadcrumb.displayText}</Link>}
+          <Link to={breadcrumb.path}>{breadcrumb.displayText}</Link>
         </Breadcrumb.Item>
       );
     });
   }, [pathname]);
 
+  if (!BreadcrumbList) return null;
+
   return <Breadcrumb>{BreadcrumbList}</Breadcrumb>;
 };
-
 
 export default memo(Breadcrumbs);

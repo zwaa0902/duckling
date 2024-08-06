@@ -1,0 +1,16 @@
+.breadcrumb {
+  margin-bottom: 16px;
+  font-size: 14px;
+
+  .ant-breadcrumb-link {
+    color: #1890ff;
+
+    &:hover {
+      color: #40a9ff;
+    }
+  }
+
+  .ant-breadcrumb-separator {
+    margin: 0 8px;
+  }
+}

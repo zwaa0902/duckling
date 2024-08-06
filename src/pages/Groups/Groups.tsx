@@ -6,6 +6,7 @@ import groupService from '@/services/group.service';
 import '@styles/groups/gr.scss';
 import { useAppSelector } from '@/hooks/common';
 import { useNavigate } from 'react-router-dom';
+import { routes } from '@/constants/routes';
 
 const { Text } = Typography;
 
@@ -29,7 +30,7 @@ function Groups() {
     <div className='gr-wrapper'>
       <Row gutter={16} style={{ width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
         <Text>Total groups: {groups.length}</Text>
-        <Button type='default' onClick={() => navigate('/create-group')}>
+        <Button type='default' onClick={() => navigate(routes.createGroup)}>
           Create
         </Button>
       </Row>
@@ -43,7 +44,7 @@ function Groups() {
           return (
             <List.Item
               onClick={() => {
-                navigate('/detail-group', { state: { group: item } });
+                navigate(routes.detailGroup, { state: { group: item } });
               }}
             >
               <List.Item.Meta

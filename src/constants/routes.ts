@@ -2,8 +2,8 @@ export const routes = {
   onboarding: '/',
   home: '/home',
   groups: '/groups',
-  detailGroup: '/group/detail',
-  createGroup: '/group/create',
+  createGroup: '/groups/create',
+  detailGroup: '/groups/detail',
   profile: '/profile',
   settings: '/settings',
 };
