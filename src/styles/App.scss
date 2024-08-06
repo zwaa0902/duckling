@@ -8,6 +8,36 @@
   background: unset;
 }
 
+.breadcrumbs-wrapper {
+  align-items: left;
+
+  &.has-breadcrumbs {
+    @media only screen and (max-width: 1284px) {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    @media only screen and (min-width: 1285px) {
+      align-items: center;
+      width: 1280px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1284px) {
+  .ant-breadcrumb {
+    align-self: flex-start;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 1285px) {
+  .ant-breadcrumb {
+    align-self: flex-start;
+    /* width: 1280px; */
+  }
+}
+
 .ant-input {
   border-radius: 20px;
 }
