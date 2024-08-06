@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
-import { Divider, List, Row, Tabs, Typography, Avatar as AntAva } from 'antd';
+import { Divider, List, Row, Tabs, Typography, Avatar as AntAva, Empty, Button } from 'antd';
 import { useAppDispatch } from '@/hooks/common';
 import userService from '@/services/user.service';
 import { setUserInfo } from '@/redux/slices/user';
@@ -12,6 +12,9 @@ import groupService from '@/services/group.service';
 import GroupModel from '@/model/GroupModel';
 
 import '@styles/home/home-styles.scss';
+import FloatingButton from '@/components/common/FloatingButton';
+import { useNavigate } from 'react-router-dom';
+import { routes } from '@/constants/routes';
 
 const { Text } = Typography;
 
@@ -75,7 +78,7 @@ const userTest: ExtendedTelegramWebAppUser = {
 
 function Home() {
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('1');
   const [tabData, setTabData] = useState([[], [], []]);
   // const { network } = useTonConnect();
@@ -175,7 +178,7 @@ function Home() {
   }, [activeTab, user]);
 
   const renderItemForGroups = (item: GroupModel, index: number) => (
-    <List.Item>
+    <List.Item onClick={(e) => navigate(routes.detailGroup, { state: { group: item } })}>
       <List.Item.Meta
         avatar={<AntAva src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
         title={item.group_name}
@@ -183,6 +186,26 @@ function Home() {
       />
     </List.Item>
   );
+
+  const renderEmptybyTabId = (tabId: string) => {
+    let emptyMessage = '';
+    if (tabId === '1') {
+      emptyMessage = 'No Friends Available';
+    } else if (tabId === '2') {
+      emptyMessage = 'No Groups Available';
+    } else {
+      emptyMessage = 'No Activities Available';
+    }
+    return (
+      <Empty
+        image='https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg'
+        imageStyle={{ height: 60 }}
+        description={<Typography.Text>{emptyMessage}</Typography.Text>}
+      >
+        <Button type='primary'>Create Now</Button>
+      </Empty>
+    );
+  };
 
   return (
     <div className='wrapper'>
@@ -226,6 +249,9 @@ function Home() {
                   <List
                     itemLayout='horizontal'
                     dataSource={tabData[i]}
+                    locale={{
+                      emptyText: renderEmptybyTabId(id),
+                    }}
                     renderItem={(item: any, index) => {
                       switch (id) {
                         case '1': // Friends
@@ -273,6 +299,7 @@ function Home() {
           </FlexBoxRow>
           <Counter />
           <TransferTon /> */}
+      <FloatingButton />
     </div>
   );
 }

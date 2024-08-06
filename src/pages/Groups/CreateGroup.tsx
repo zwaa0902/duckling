@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import groupService from '@/services/group.service';
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '@/hooks/common';
 
 const users: FriendModel[] = [
   { name: 'User 1', phone: '(217) 555-0113', image: 'https://i.pravatar.cc/100?img=1' },
@@ -32,6 +33,8 @@ const { Text } = Typography;
 
 function CreateGroup() {
   const navigate = useNavigate();
+  const user = useAppSelector((state) => state.user);
+
   const [friendsSelected, setFriendsSelected] = useState<FriendModel[]>([]);
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -57,7 +60,7 @@ function CreateGroup() {
       group_description: values.group_description,
       group_bank_account: null,
       group_bank_code: null,
-      group_owner: '5206533931',
+      group_owner: user.user.id ?? '',
       group_avatar: null,
       updated_at: dayjs().toISOString(),
     };

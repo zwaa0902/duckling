@@ -44,7 +44,7 @@ function Groups() {
           return (
             <List.Item
               onClick={() => {
-                navigate(routes.detailGroup, { state: { group: item } });
+                navigate('/detail', { state: { group: item } });
               }}
             >
               <List.Item.Meta

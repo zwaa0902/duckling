@@ -10,6 +10,21 @@
   height: 100vh;
   overflow: auto;
 }
+.wallet {
+  width: -webkit-fill-available;
+  border-radius: 8px;
+  background-color: #0d3c46;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+.wallet-column {
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .create-gr-wrapper {
   display: flex;
@@ -161,4 +176,20 @@ form > .ant-row {
   display: flex;
   justify-content: center;
   margin: 16px 0;
+}
+
+//detail
+.card-row {
+  display: flex !important;
+  justify-content: space-between; /* Adjust space between cards */
+  padding: 20px; /* Adjust padding around the row */
+}
+
+.card {
+  padding: 8px 4px;
+  display: flex;
+  justify-content: center;
+  .icon {
+    font-size: 30px;
+  }
 }

@@ -5,16 +5,17 @@ import Home from './pages/Home/Home';
 import Groups from './pages/Groups/Groups';
 import CreateGroup from './pages/Groups/CreateGroup';
 import DetailGroup from './pages/Groups/DetailGroup';
+import Profile from './pages/Profile/Profile';
 
 const router = createBrowserRouter(
   [
     {
+      path: '',
+      element: <Onboarding />,
+    },
+    {
       element: <AppLayout />,
       children: [
-        {
-          path: '',
-          element: <Onboarding />,
-        },
         {
           path: 'home',
           element: <Home />,
@@ -36,7 +37,10 @@ const router = createBrowserRouter(
             },
           ],
         },
-
+        {
+          path: 'profile',
+          element: <Profile />,
+        },
         {
           path: '*',
           element: <Navigate to='/' />,

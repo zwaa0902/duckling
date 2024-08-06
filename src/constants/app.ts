@@ -1,34 +1,27 @@
 export const menuItems = [
   {
-    id: 1,
-    displayText: 'Trang chủ',
+    key: 1,
+    label: 'Home',
     path: '/home',
     hasNestedMenu: false,
   },
   {
-    id: 2,
-    displayText: 'Groups',
+    key: 2,
+    label: 'Groups',
     path: '/groups',
     hasNestedMenu: true,
-    nestedMenu: [
+    children: [
       {
-        id: 2.1,
-        displayText: 'Create Group',
+        key: 2.1,
+        label: 'Create Group',
         path: '/groups/create',
-        hasNestedMenu: false,
-      },
-      {
-        id: 2.2,
-        displayText: 'Detail Group',
-        path: '/groups/detail',
         hasNestedMenu: false,
       },
     ],
   },
-
   {
-    id: 3,
-    displayText: 'Tài khoản',
+    key: 3,
+    label: 'Profile',
     path: '/profile',
   },
 ];
