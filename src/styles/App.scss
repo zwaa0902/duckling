@@ -5,7 +5,13 @@
 }
 
 .ant-card {
+  border-radius: 2px;
+  .ant-card-cover {
+    display: flex;
+    justify-content: center;
+  }
   .ant-card-body {
+    text-align: center;
     padding: 0;
   }
 }

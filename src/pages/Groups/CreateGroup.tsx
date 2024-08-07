@@ -1,16 +1,16 @@
-import type { FormProps } from 'antd';
-import { Typography, Button, Checkbox, Form, Input, Avatar, List, Row, Col } from 'antd';
-import Emoji from 'react-ios-emojis';
-import '@styles/groups/gr.scss';
 import { useRef, useState } from 'react';
-import FriendModel from '@/model/FriendModel';
+import { Typography, Button, Checkbox, Form, FormProps, Input, Avatar, List, Row, Col } from 'antd';
 import { CameraOutlined } from '@ant-design/icons';
-import GroupModel from '@/model/GroupModel';
-import dayjs from 'dayjs';
-import groupService from '@/services/group.service';
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@/hooks/common';
+import dayjs from 'dayjs';
+import groupService from '@/services/group.service';
+import GroupModel from '@/model/GroupModel';
+import FriendModel from '@/model/FriendModel';
+import Emoji from 'react-ios-emojis';
+
+import '@styles/groups/gr.scss';
 
 const users: FriendModel[] = [
   { name: 'User 1', phone: '(217) 555-0113', image: 'https://i.pravatar.cc/100?img=1' },

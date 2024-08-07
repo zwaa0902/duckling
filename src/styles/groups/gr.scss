@@ -10,10 +10,11 @@
   height: 100vh;
   overflow: auto;
 }
+
 .wallet {
   width: -webkit-fill-available;
   border-radius: 8px;
-  background-color: #0d3c46;
+  background-color: #1c2333;
   display: flex;
   justify-content: space-around;
   margin-bottom: 16px;
@@ -182,12 +183,16 @@ form > .ant-row {
 .card-row {
   display: flex !important;
   justify-content: space-between; /* Adjust space between cards */
-  padding: 20px; /* Adjust padding around the row */
+  padding: 4px 16px; /* Adjust padding around the row */
 }
 
 .card {
-  padding: 8px 4px;
-  display: flex;
+  margin: 4px;
+  width: 62px !important;
+  height: 62px;
+  background-color: white;
+  border-radius: 2px !important;
+  display: flex !important;
   justify-content: center;
   .icon {
     font-size: 30px;

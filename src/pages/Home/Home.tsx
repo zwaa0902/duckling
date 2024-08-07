@@ -3,18 +3,17 @@ import { useEffect, useState } from 'react';
 import { onFailureNotification, onSuccessNotification } from '@/components/common/Notification';
 import { Divider, List, Row, Tabs, Typography, Avatar as AntAva, Empty, Button } from 'antd';
 import { useAppDispatch } from '@/hooks/common';
-import userService from '@/services/user.service';
 import { setUserInfo } from '@/redux/slices/user';
-import TelegramWebAppUserModel from '@/model/TelegramWebAppUserModel';
-
-import Avatar from '@components/common/Avatar';
-import groupService from '@/services/group.service';
-import GroupModel from '@/model/GroupModel';
-
-import '@styles/home/home-styles.scss';
-import FloatingButton from '@/components/common/FloatingButton';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '@/constants/routes';
+import TelegramWebAppUserModel from '@/model/TelegramWebAppUserModel';
+import userService from '@/services/user.service';
+import groupService from '@/services/group.service';
+import GroupModel from '@/model/GroupModel';
+import Avatar from '@components/common/Avatar';
+import FloatingButton from '@/components/common/FloatingButton';
+
+import '@styles/home/home-styles.scss';
 
 const { Text } = Typography;
 
@@ -178,7 +177,7 @@ function Home() {
   }, [activeTab, user]);
 
   const renderItemForGroups = (item: GroupModel, index: number) => (
-    <List.Item onClick={(e) => navigate(routes.detailGroup, { state: { group: item } })}>
+    <List.Item onClick={() => navigate(routes.detailGroup, { state: { group: item } })}>
       <List.Item.Meta
         avatar={<AntAva src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
         title={item.group_name}
@@ -215,7 +214,7 @@ function Home() {
       <Row>
         <Text className='white-1'>{user?.first_name ?? 'John Doe'}</Text>
       </Row>
-      <div className='wallet' style={{ margin: '1rem' }}>
+      <div className='wallet' style={{ margin: '1rem', backgroundColor: 'white' }}>
         <div className='wallet-column'>
           <Text className='black-1'>You own</Text>
           <Text className='black-1'>170.000.000</Text>
