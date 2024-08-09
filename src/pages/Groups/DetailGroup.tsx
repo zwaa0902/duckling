@@ -130,7 +130,7 @@ function DetailGroup() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white' }}>
+    <div className='detail-screen-wrapper'>
       <div className='wallet m-16'>
         <div className='wallet-column'>
           <Text className='white-1'>You own</Text>
@@ -196,15 +196,15 @@ function DetailGroup() {
       <div className='activities-wrapper'>
         {listActivities.map((activity, index) => (
           <div className='activity-container' key={activity.activity_id}>
-            <div className='row'>
-              <div className='row'>
+            <div className='row-detail'>
+              <div className='row-detail'>
                 <Avatar src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />
                 <Text className='body-3'>{activity.activity_name}</Text>
               </div>
               <Text className='body-3 bold'>{commify(activity.totalMoney)} VND</Text>
             </div>
             <Divider className='divider' />
-            <div className='row'>
+            <div className='row-detail'>
               {activity.friends.length > 0 && (
                 <div className='row-avatars'>
                   {activity.friends.map((user, index) => (
@@ -219,7 +219,7 @@ function DetailGroup() {
             </div>
             <Divider className='divider' />
             <div style={{ height: '8px' }} />
-            <div className='row'>
+            <div className='row-detail'>
               <Text>{dayjs(activity.created_at).format(dateFormatWithSlash)}</Text>
               <div className='detail-button'>View detail</div>
             </div>

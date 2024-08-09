@@ -195,13 +195,24 @@ function Home() {
     } else {
       emptyMessage = 'No Activities Available';
     }
+    const handleNavigate = () => {
+      if (tabId === '1') {
+        console.log('navigate to add friend');
+      } else if (tabId === '2') {
+        navigate(routes.createGroup);
+      } else {
+        console.log('navigate to detail activity');
+      }
+    };
     return (
       <Empty
         image='https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg'
         imageStyle={{ height: 60 }}
         description={<Typography.Text>{emptyMessage}</Typography.Text>}
       >
-        <Button type='primary'>Create Now</Button>
+        <Button type='primary' onClick={handleNavigate}>
+          Create Now
+        </Button>
       </Empty>
     );
   };
